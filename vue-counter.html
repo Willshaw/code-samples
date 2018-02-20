@@ -4,32 +4,54 @@
 	<title>Simple VueJS Counter</title>
 </head>
 <body>
+	<!-- we need the id of the element to attach to the vue application -->
 	<div id="app">
+		<!--
+			header tag for the page, will render "The value is: 0" on page load
+			then {{value}} will change as the increment/decrement buttons are pressed
+			and they change the value of this.value
+		-->
 		<h1>The value is: {{value}}</h1>
+		<!-- this will display the status message, this.msg -->
 		<p>{{msg}}</p>
+		<!-- this @click is shorthand for v-on:click="increment" -->
 		<button @click="increment">Increment</button>
 		<button @click="decrement">Increment</button>
 	</div>
+	<!-- we're getting vuejs from unpkg.com -->
 	<script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
 	<script>
+		// store the vue app in the app variable
 		var app = new Vue({
+			// attach the #app element to our application
 			el: '#app',
+			// set the data on the applicaiton that can be rendered in the template
+			// here we have a msg, {{msg}}, this.msg
+			// and the value, {{value}}, this.value
 			data: {
 				msg: 'loading...',
 				value: 0
 			},
+			// this method is just run once when the app is created
+			// this is a good place to add event listeners
 			created: function() {
+				// we know the app is loaded now, so it's good to update
+				// the status and let the user know
 				this.msg = 'App loaded';
 			},
+			// list all methods here that need to be accessed by the template
+			// they can also be accessed by other methods using this.methodName
 			methods: {
+				// increase the value by 1 and update the message
 				increment: function() {
 					this.value++;
 					this.msg = 'Value increased';
 				},
+				// decrease the value by 1 and update the message
 				decrement: function() {
 					this.value--;
 					this.msg = 'Value decreased';
-				},				
+				},
 			}
 		})
 	</script>
