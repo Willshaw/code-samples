@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple VueJS Counter</title>
+</head>
+<body>
+	<div id="app">
+		<h1>The value is: {{value}}</h1>
+		<p>{{msg}}</p>
+		<button @click="increment">Increment</button>
+		<button @click="decrement">Increment</button>
+	</div>
+	<script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				msg: 'loading...',
+				value: 0
+			},
+			created: function() {
+				this.msg = 'App loaded';
+			},
+			methods: {
+				increment: function() {
+					this.value++;
+					this.msg = 'Value increased';
+				},
+				decrement: function() {
+					this.value--;
+					this.msg = 'Value decreased';
+				},				
+			}
+		})
+	</script>
+</body>
+</html>
